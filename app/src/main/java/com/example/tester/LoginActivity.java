@@ -2,16 +2,24 @@ package com.example.tester;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText textEmail, textPassword;
-    private Button buttonLogin, buttonRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,18 +28,41 @@ public class LoginActivity extends AppCompatActivity {
 
         textEmail = findViewById(R.id.login_email);
         textPassword = findViewById(R.id.login_password);
-        buttonLogin = findViewById(R.id.loginL_button);
-        buttonRegister = findViewById(R.id.loginR_button);
+        Button buttonLogin = findViewById(R.id.loginL_button);
+        TextView buttonRegister = findViewById(R.id.loginR_button);
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Retrieve textEmail and textPassword entered by the user
                 String email = textEmail.getText().toString().trim();
                 String password = textPassword.getText().toString().trim();
 
-                // Perform login authentication logic here
-                // For example, you can check if the textEmail and textPassword are valid
+                // check if user input is empty
+                if (TextUtils.isEmpty(email)) {
+                    Toast.makeText(LoginActivity.this, "Enter email", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(password)) {
+                    Toast.makeText(LoginActivity.this, "Enter password", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                // user authentication
+                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_LONG).show();
+                            Intent loginIntent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(loginIntent);
+                            finish();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
             }
         });
 
