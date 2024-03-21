@@ -7,7 +7,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
-    <!-- Welcome page -->
+    <!-- MainActivity -->
     <string name="welcome_msg">Welcome to Study App</string>
     <string name="welcome_login">Login</string>
     <string name="welcome_register">Register</string>
@@ -17,6 +17,13 @@
     <string name="login_email">Email</string>
     <string name="login_password">Password</string>
     <string name="login_button">Login</string>
-    <string name="loginR_button">Register here if you don\'t have an account</string>
+    <string name="loginR_button">Click here to register an account</string>
+
+    <!-- RegisterActivity -->
+    <string name="reg_msg">Register</string>
+    <string name="reg_email">Email</string>
+    <string name="reg_password">Password</string>
+    <string name="reg_button">Register</string>
+    <string name="regL_button">Click here to login to your account</string>
 
 </resources>

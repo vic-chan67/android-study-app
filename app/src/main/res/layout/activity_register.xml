@@ -7,12 +7,12 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/login_msg"
+        android:id="@+id/reg_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:text="@string/login_msg"
+        android:text="@string/reg_msg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -20,52 +20,52 @@
         android:layout_marginBottom="16dp"/>
 
     <EditText
-        android:id="@+id/login_email"
+        android:id="@+id/reg_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:hint="@string/login_email"
-        app:layout_constraintTop_toBottomOf="@id/loginR_button"
+        android:hint="@string/reg_email"
+        app:layout_constraintTop_toBottomOf="@id/regL_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"/>
 
     <EditText
-        android:id="@+id/login_password"
+        android:id="@+id/reg_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="@string/login_password"
-        app:layout_constraintTop_toBottomOf="@id/login_email"
+        android:hint="@string/reg_password"
+        app:layout_constraintTop_toBottomOf="@id/reg_email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"/>
 
     <Button
-        android:id="@+id/loginL_button"
+        android:id="@+id/regR_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login_button"
-        app:layout_constraintTop_toBottomOf="@id/login_password"
+        android:text="@string/reg_button"
+        app:layout_constraintTop_toBottomOf="@id/reg_password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="32dp" />
 
     <TextView
-        android:id="@+id/loginR_button"
+        android:id="@+id/regL_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/loginR_button"
+        android:text="@string/regL_button"
         android:textColor="@color/reg_log_button_pressed"
         android:textSize="16sp"
         android:textStyle="bold"
         android:clickable="true"
         android:onClick="onLoginButtonClick"
-        app:layout_constraintTop_toBottomOf="@id/login_msg"
+        app:layout_constraintTop_toBottomOf="@id/reg_msg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="1dp"
