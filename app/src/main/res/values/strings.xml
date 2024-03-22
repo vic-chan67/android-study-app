@@ -21,4 +21,16 @@
     <string name="reg_button">Register</string>
     <string name="regL_button">Click here to login to your account</string>
 
+    <!-- HomeActivity -->
+    <string name="home_header">Home</string>
+    <string name="home_desc">Click an option to be taken to that page</string>
+    <string name="home_todo">To-Do Lists</string>
+    <string name="home_timer">Pomodoro Timer</string>
+    <string name="home_stats">Your Stats</string>
+    <string name="home_rewards">Your Rewards</string>
+
+    <!-- SettingsActivity -->
+    <string name="settings_button">Settings</string>
+    <string name="settings_header">Settings</string>
+
 </resources>
