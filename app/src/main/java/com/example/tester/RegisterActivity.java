@@ -8,11 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -55,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
                      public void onComplete(@NonNull Task<AuthResult> task) {
                          if (task.isSuccessful()) {
                              Toast.makeText(RegisterActivity.this, "Register successful", Toast.LENGTH_LONG).show();
-                             Intent registerIntent = new Intent(getApplicationContext(), MainActivity.class);
+                             Intent registerIntent = new Intent(getApplicationContext(), LoginActivity.class);
                              startActivity(registerIntent);
                              finish();
                          } else {

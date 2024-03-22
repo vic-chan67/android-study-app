@@ -2,11 +2,6 @@
     <!-- App name -->
     <string name="app_name">Study App</string>
 
-    <!-- Bottom navigation names -->
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-
     <!-- MainActivity -->
     <string name="welcome_msg">Welcome to Study App</string>
     <string name="welcome_login">Login</string>

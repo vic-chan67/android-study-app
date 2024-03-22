@@ -23,5 +23,9 @@
 
         <activity android:name=".LoginActivity"/>
         <activity android:name=".RegisterActivity"/>
+
+
+        <activity android:name="com.example.tester.ui.todo.TodoActivity"/>
+
     </application>
 </manifest>
