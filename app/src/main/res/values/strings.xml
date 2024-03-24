@@ -33,7 +33,7 @@
 
     <!-- TimerActivity -->
     <string name="timer_header">Pomodoro Timer</string>
-    <string name="timer_desc">Default: 50 minutes focus, 10 minutes break</string>
+    <string name="timer_desc">50 minutes study, 10 minutes break</string>
     <string name="timer_time">50:00</string>
     <string name="timer_start">Start timer</string>
     <string name="timer_stop">Stop timer</string>
