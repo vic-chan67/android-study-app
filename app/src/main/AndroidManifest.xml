@@ -24,8 +24,8 @@
         <activity android:name=".LoginActivity"/>
         <activity android:name=".RegisterActivity"/>
         <activity android:name=".HomeActivity"/>
-        <activity android:name=".SettingsActivity"/>
 
+        <activity android:name="com.example.tester.ui.timer.TimerActivity"/>
         <activity android:name="com.example.tester.ui.todo.TodoActivity"/>
 
     </application>

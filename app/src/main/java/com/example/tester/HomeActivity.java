@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.tester.ui.timer.TimerActivity;
+import com.example.tester.ui.todo.TodoActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -18,7 +21,7 @@ public class HomeActivity extends AppCompatActivity {
         todoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent todoIntent = new Intent(HomeActivity.this, MainActivity.class);
+                Intent todoIntent = new Intent(HomeActivity.this, TodoActivity.class);
                 startActivity(todoIntent);
             }
         });
@@ -28,38 +31,19 @@ public class HomeActivity extends AppCompatActivity {
         timerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent timerIntent = new Intent(HomeActivity.this, MainActivity.class);
+                Intent timerIntent = new Intent(HomeActivity.this, TimerActivity.class);
                 startActivity(timerIntent);
             }
         });
 
-        // personal stats button
-        Button statsButton = findViewById(R.id.home_stats);
-        statsButton.setOnClickListener(new View.OnClickListener() {
+        // logout button
+        Button logoutButton = findViewById(R.id.logout_button);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent statsIntent = new Intent(HomeActivity.this, MainActivity.class);
-                startActivity(statsIntent);
-            }
-        });
-
-        // personal rewards button
-        Button rewardsButton = findViewById(R.id.home_rewards);
-        rewardsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent rewardsIntent = new Intent(HomeActivity.this, MainActivity.class);
-                startActivity(rewardsIntent);
-            }
-        });
-
-        // settings button
-        Button settingsButton = findViewById(R.id.settings_button);
-        settingsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent settingsIntent = new Intent(HomeActivity.this, SettingsActivity.class);
-                startActivity(settingsIntent);
+                FirebaseAuth.getInstance().signOut();
+                Intent logoutIntent = new Intent(HomeActivity.this, MainActivity.class);
+                startActivity(logoutIntent);
             }
         });
     }
