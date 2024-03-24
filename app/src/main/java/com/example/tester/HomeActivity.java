@@ -11,37 +11,45 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
 
+    /**
+     * onCreate
+     * Called when starting the activity to create the ui and its components
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // to-do list button
+        // Setup the todoButton listener
         Button todoButton = findViewById(R.id.home_todo);
         todoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Takes the user to the TodoActivity page (to-do lists)
                 Intent todoIntent = new Intent(HomeActivity.this, TodoActivity.class);
                 startActivity(todoIntent);
             }
         });
 
-        // pomodoro timer button
+        // Setup the timerButton listener
         Button timerButton = findViewById(R.id.home_timer);
         timerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Takes the user to the TimerActivity page (pomodoro timer)
                 Intent timerIntent = new Intent(HomeActivity.this, TimerActivity.class);
                 startActivity(timerIntent);
             }
         });
 
-        // logout button
+        // Setup the logoutButton listener
         Button logoutButton = findViewById(R.id.logout_button);
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Logs user out of their account
                 FirebaseAuth.getInstance().signOut();
+                // Takes the user back to the MainActivity page (main page to log back in or register a new account)
                 Intent logoutIntent = new Intent(HomeActivity.this, MainActivity.class);
                 startActivity(logoutIntent);
             }

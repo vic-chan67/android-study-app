@@ -10,7 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.tester.ui.todo.TodoActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -20,25 +19,31 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText textEmail, textPassword;
 
+    /**
+     * onCreate
+     * Called when starting the activity to create the ui and its components
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // Setup components
         textEmail = findViewById(R.id.login_email);
         textPassword = findViewById(R.id.login_password);
-        Button buttonLogin = findViewById(R.id.loginL_button);
-        TextView buttonRegister = findViewById(R.id.loginR_button);
-
+        Button loginButton = findViewById(R.id.loginL_button);
+        TextView registerButton = findViewById(R.id.loginR_button);
         FirebaseAuth auth = FirebaseAuth.getInstance();
-
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
+        
+        // Setup the loginButton listener
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Get user input for their email and password
                 String email = textEmail.getText().toString().trim();
                 String password = textPassword.getText().toString().trim();
 
-                // check if user input is empty
+                // Check if the user input is empty
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(LoginActivity.this, "Enter email", Toast.LENGTH_LONG).show();
                     return;
@@ -48,12 +53,13 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                // user authentication
+                // User authentication (sign in)
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_LONG).show();
+                            // Takes the user to the HomeActivity page (home)
                             Intent loginIntent = new Intent(getApplicationContext(), HomeActivity.class);
                             startActivity(loginIntent);
                             finish();
@@ -65,13 +71,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
+        // Setup registerButton listener
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Takes the user to the RegisterActivity page (register an account)
                 Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(registerIntent);
             }
         });
     }
 }
-

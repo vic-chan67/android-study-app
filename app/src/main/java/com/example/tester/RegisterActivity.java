@@ -19,25 +19,31 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText textEmail, textPassword;
 
+    /**
+     * onCreate
+     * Called when starting the activity to create the ui and its components
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        // Setup components
         textEmail = findViewById(R.id.reg_email);
         textPassword = findViewById(R.id.reg_password);
-        Button buttonRegister = findViewById(R.id.regR_button);
-        TextView buttonLogin = findViewById(R.id.regL_button);
-
+        Button registerButton = findViewById(R.id.regR_button);
+        TextView loginButton = findViewById(R.id.regL_button);
         FirebaseAuth auth = FirebaseAuth.getInstance();
-
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
+        
+        // Setup registerButton listener
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Get user input for their email and password
                 String email = textEmail.getText().toString().trim();
                 String password = textPassword.getText().toString().trim();
 
-                // check if user input is empty
+                // Check if the user input is empty
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(RegisterActivity.this, "Enter email", Toast.LENGTH_LONG).show();
                     return;
@@ -47,11 +53,13 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
+                // User authentication (create account)
                  auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                      @Override
                      public void onComplete(@NonNull Task<AuthResult> task) {
                          if (task.isSuccessful()) {
                              Toast.makeText(RegisterActivity.this, "Register successful", Toast.LENGTH_LONG).show();
+                             // Takes the user to the LoginActivity page (login to their new account)
                              Intent registerIntent = new Intent(getApplicationContext(), LoginActivity.class);
                              startActivity(registerIntent);
                              finish();
@@ -63,9 +71,11 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
+        // Setup loginButton listener
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Takes the user to the LoginActivity page (login to their new account)
                 Intent registerIntent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(registerIntent);
             }
