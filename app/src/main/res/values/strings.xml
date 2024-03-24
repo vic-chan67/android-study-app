@@ -21,16 +21,22 @@
     <string name="reg_button">Register</string>
     <string name="regL_button">Click here to login to your account</string>
 
+    <!-- global buttons -->
+    <string name="back_button">Back</string>
+
     <!-- HomeActivity -->
     <string name="home_header">Home</string>
-    <string name="home_desc">Click an option to be taken to that page</string>
+    <string name="home_desc">Click an option below</string>
     <string name="home_todo">To-Do Lists</string>
     <string name="home_timer">Pomodoro Timer</string>
-    <string name="home_stats">Your Stats</string>
-    <string name="home_rewards">Your Rewards</string>
+    <string name="logout_button">Logout</string>
 
-    <!-- SettingsActivity -->
-    <string name="settings_button">Settings</string>
-    <string name="settings_header">Settings</string>
+    <!-- TimerActivity -->
+    <string name="timer_header">Pomodoro Timer</string>
+    <string name="timer_desc">Default: 50 minutes focus, 10 minutes break</string>
+    <string name="timer_time">50:00</string>
+    <string name="timer_start">Start timer</string>
+    <string name="timer_stop">Stop timer</string>
+    <string name="timer_desc2">Stopping and starting a timer will reset the timer</string>
 
 </resources>
