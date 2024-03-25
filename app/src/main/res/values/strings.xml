@@ -31,6 +31,13 @@
     <string name="home_timer">Pomodoro Timer</string>
     <string name="logout_button">Logout</string>
 
+    <!-- TodoActivity -->
+    <string name="todo_header">To-do List</string>
+    <string name="todo_desc">Click on Add to add an item, click on the item to edit or delete it</string>
+    <string name="todo_add">Add</string>
+    <string name="todo_edit">Edit</string>
+    <string name="todo_delete">Delete</string>
+
     <!-- TimerActivity -->
     <string name="timer_header">Pomodoro Timer</string>
     <string name="timer_desc">50 minutes study, 10 minutes break</string>
