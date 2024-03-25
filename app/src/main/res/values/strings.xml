@@ -33,10 +33,11 @@
 
     <!-- TodoActivity -->
     <string name="todo_header">To-do List</string>
-    <string name="todo_desc">Click on Add to add an item, click on the item to edit or delete it</string>
+    <string name="todo_desc">Add, edit and delete items</string>
     <string name="todo_add">Add</string>
     <string name="todo_edit">Edit</string>
     <string name="todo_delete">Delete</string>
+    <string name="todo_new">New Item</string>
 
     <!-- TimerActivity -->
     <string name="timer_header">Pomodoro Timer</string>
