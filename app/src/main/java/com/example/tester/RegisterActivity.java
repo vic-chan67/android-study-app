@@ -31,11 +31,10 @@ public class RegisterActivity extends AppCompatActivity {
         // Setup components
         textEmail = findViewById(R.id.reg_email);
         textPassword = findViewById(R.id.reg_password);
-        Button registerButton = findViewById(R.id.regR_button);
-        TextView loginButton = findViewById(R.id.regL_button);
         FirebaseAuth auth = FirebaseAuth.getInstance();
         
         // Setup registerButton listener
+        Button registerButton = findViewById(R.id.regR_button);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         // Setup loginButton listener
+        TextView loginButton = findViewById(R.id.regL_button);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
