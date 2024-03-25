@@ -10,6 +10,8 @@ import android.view.View;
 public class TimerBackground extends View {
 
     private Paint backgroundPaint;
+    private int backgroundColour = Color.parseColor("#A0A0A0");     // background colour
+    private double percentage;
 
     public TimerBackground(Context context) {
         super(context);
@@ -26,22 +28,33 @@ public class TimerBackground extends View {
         init();
     }
 
+    // set the background colour
     private void init() {
         backgroundPaint = new Paint();
-            backgroundPaint.setColor(Color.parseColor("#A0A0A0")); // Set initial background color
+        backgroundPaint.setColor(backgroundColour);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        // Draw the background with the current paint color
-        canvas.drawRect(0, 0, getWidth(), getHeight(), backgroundPaint);
+        // find backgroundHeight from percentage of time left
+        int backgroundHeight = (int) (getHeight() * percentage);
+        // draw background with the backgroundHeight
+        canvas.drawRect(0, getHeight() - backgroundHeight, getWidth(), getHeight(), backgroundPaint);
     }
 
-    // Method to set the background color dynamically
-    public void setBackgroundColor(int color) {
+    // set the background colour
+    public void setBackgroundColour(int color) {
         backgroundPaint.setColor(color);
-        invalidate(); // Redraw the view
+        // redraw
+        invalidate();
+    }
+
+    // set percentage of time left
+    public void setPercentage(double percentage) {
+        this.percentage = percentage;
+        // redraw
+        invalidate();
     }
 }

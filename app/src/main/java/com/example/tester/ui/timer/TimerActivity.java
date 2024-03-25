@@ -16,12 +16,10 @@ public class TimerActivity extends AppCompatActivity {
     private TextView timerText;
     private TimerBackground timerBackground;
     private CountDownTimer timer;
-    private long totalTime = 60 * 1000;   // default value of 50mins study time
-    private long timeLeft = totalTime;
+    private long totalTime = 50 * 60 * 1000;   // default value of 50 minutes study time
+    private long timeLeft = totalTime;      // initial timeLeft
     private boolean timeRunning = false;      // false = timer stopped (shows start button), true = timer running (shows stop button)
     private Button startStop;
-    private long studyTime = 50 * 60 * 1000;
-    private long breakTime = 10 * 60 * 1000;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +50,6 @@ public class TimerActivity extends AppCompatActivity {
                 startActivity(backIntent);
             }
         });
-
-        // skip to study/break button
     }
 
     // stop the timer
@@ -65,31 +61,36 @@ public class TimerActivity extends AppCompatActivity {
 
     // start the timer
     private void startTimer() {
+        // set studyTime and breakTime variables
+        long studyTime = 50 * 60 * 1000;
+        long breakTime = 10 * 60 * 1000;
+
+        // start new CountDownTimer (countDownInterval = 1000 milliseconds = 1 second)
         timer = new CountDownTimer(totalTime, 1000) {
             @Override
+            // when timer is running
             public void onTick(long millisUntilFinished) {
-                timeRunning = true;
-                startStop.setText(R.string.timer_stop);
-                timeLeft = millisUntilFinished;
-                updateTimer();
+                timeRunning = true;     // set bool to true (timer is running)
+                startStop.setText(R.string.timer_stop);     // change button text to "Stop Timer"
+                timeLeft = millisUntilFinished;     // set the timeLeft
+                updateTimer();      // updateTimer() updates the timer text
+                updateBackground();     // updateBackground() updates the background text
             }
 
             @Override
+            // when timer is finished
             public void onFinish() {
-                if (totalTime == (60 * 1000)) {   // studyTime
-                    totalTime = 2 * 60 * 1000;  // breakTime
+                timeRunning = false;        // set bool to false (timer is finished)
+                startStop.setText(R.string.timer_start);        // change button text to "Start Timer"
 
-                    timeRunning = false;
-                    startStop.setText(R.string.timer_start);
-                    String timeLeftText = "10:00";
+                // check if the totalTime was the studyTime
+                if (totalTime == studyTime) {
+                    totalTime = breakTime;      // set totalTime to breakTime
+                    String timeLeftText = "10:00";      // set timer text to 10 minutes
                     timerText.setText(timeLeftText);
-//                    timerBackground();
-                } else if (totalTime == (2 * 60 * 1000)) {     // breakTime
-                    totalTime = 60 * 1000;     // studyTime
-
-                    timeRunning = true;
-                    startStop.setText(R.string.timer_start);
-                    String timeLeftText = "50:00";
+                } else if (totalTime == breakTime) {
+                    totalTime = studyTime;      // set totalTime to studyTime
+                    String timeLeftText = "50:00";      // set timer text to 50 minutes
                     timerText.setText(timeLeftText);
                 }
             }
@@ -98,6 +99,7 @@ public class TimerActivity extends AppCompatActivity {
 
     // update the timer text
     private void updateTimer() {
+        // find the time in minutes and seconds
         long minutes = (timeLeft / 1000) / 60;
         long seconds = (timeLeft / 1000) % 60;
 
@@ -106,7 +108,10 @@ public class TimerActivity extends AppCompatActivity {
         timerText.setText(timeLeftText);
     }
 
+    // update background colour to represent time left
     private void updateBackground() {
         double percentage = (double) timeLeft / totalTime;
+        // call timerBackground function setPercentage()
+        timerBackground.setPercentage(percentage);
     }
 }
