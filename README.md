@@ -6,3 +6,10 @@
 - Open directory in Android Studio
 - Build the project within Android Studio
 - Emulate the device (recommended emulator "Pixel_3a_API_34_extension_level_7_arm64_v8a")
+
+## Accounts (used for testing)
+tester@gmail.com
+tester123
+
+tester1@gmail.com
+tester
