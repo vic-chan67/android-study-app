@@ -28,7 +28,9 @@
     <string name="home_header">Home</string>
     <string name="home_desc">Click an option below</string>
     <string name="home_todo">To-Do Lists</string>
+    <string name="h_todo_desc">Add, edit, and delete items in a to-do list</string>
     <string name="home_timer">Pomodoro Timer</string>
+    <string name="h_timer_desc">Use a pomodoro timer for better study sessions</string>
     <string name="logout_button">Logout</string>
 
     <!-- TodoActivity -->

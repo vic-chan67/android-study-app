@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -13,11 +12,11 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:text="@string/login_msg"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="200dp"
-        android:layout_marginBottom="16dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/login_email"
@@ -26,11 +25,11 @@
         android:ems="10"
         android:inputType="textEmailAddress"
         android:hint="@string/login_email"
-        app:layout_constraintTop_toBottomOf="@id/loginR_button"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="16dp"/>
+        app:layout_constraintTop_toBottomOf="@id/loginR_button" />
 
     <EditText
         android:id="@+id/login_password"
@@ -39,21 +38,21 @@
         android:ems="10"
         android:inputType="textPassword"
         android:hint="@string/login_password"
-        app:layout_constraintTop_toBottomOf="@id/login_email"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"/>
+        app:layout_constraintTop_toBottomOf="@id/login_email" />
 
     <Button
         android:id="@+id/loginL_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_button"
-        app:layout_constraintTop_toBottomOf="@id/login_password"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp" />
+        app:layout_constraintTop_toBottomOf="@id/login_password" />
 
     <TextView
         android:id="@+id/loginR_button"
@@ -65,12 +64,11 @@
         android:textStyle="bold"
         android:clickable="true"
         android:onClick="onLoginButtonClick"
-        app:layout_constraintTop_toBottomOf="@id/login_msg"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="1dp"
         android:layout_marginBottom="16dp"
-        android:focusable="true" />
-
+        android:focusable="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_msg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,54 +21,72 @@ public class TimerActivity extends AppCompatActivity {
     private boolean timeRunning = false;      // false = timer stopped (shows start button), true = timer running (shows stop button)
     private Button startStop;
 
+    /**
+     * onCreate
+     * Called when starting the activity to create the ui and its components
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
 
+        // Setup components
         timerText = findViewById(R.id.timer_time);
         timerBackground = findViewById(R.id.backgroundView);
 
-        // timer start stop button
+        // Setup startStop button listener
         startStop = findViewById(R.id.timer_startstop);
         startStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // If timer running (timeRunning is True), stopTimer() called
                 if (timeRunning) {
                     stopTimer();
+                // If timer stopped (timeRunning is False), startTimer() called
                 } else {
                     startTimer();
                 }
             }
         });
 
-        // back button
+        // Setup backButton listener
         Button backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Takes the user to the HomeActivity page
                 Intent backIntent = new Intent(TimerActivity.this, HomeActivity.class);
                 startActivity(backIntent);
             }
         });
     }
 
-    // stop the timer
+    /**
+     * stopTimer()
+     * Stops the timer, updates the timeRunning boolean, and sets the startStop button text
+     */
     private void stopTimer() {
         timer.cancel();
         timeRunning = false;
         startStop.setText(R.string.timer_start);
     }
 
-    // start the timer
+    /**
+     * startTimer()
+     * Creates variables for the study/break times and starts the timer
+     */
     private void startTimer() {
-        // set studyTime and breakTime variables
+        // Set studyTime and breakTime variables
         long studyTime = 50 * 60 * 1000;
         long breakTime = 10 * 60 * 1000;
 
-        // start new CountDownTimer (countDownInterval = 1000 milliseconds = 1 second)
+        // Start new CountDownTimer (countDownInterval = 1000 milliseconds = 1 second)
         timer = new CountDownTimer(totalTime, 1000) {
+            /**
+             * onTick()
+             * @param millisUntilFinished   amount of time (milliseconds) until timer finished
+             * When the timer is running
+             */
             @Override
-            // when timer is running
             public void onTick(long millisUntilFinished) {
                 timeRunning = true;     // set bool to true (timer is running)
                 startStop.setText(R.string.timer_stop);     // change button text to "Stop Timer"
@@ -77,17 +95,22 @@ public class TimerActivity extends AppCompatActivity {
                 updateBackground();     // updateBackground() updates the background text
             }
 
+            /**
+             * onFinish()
+             * When the timer is finished
+             */
             @Override
-            // when timer is finished
             public void onFinish() {
                 timeRunning = false;        // set bool to false (timer is finished)
                 startStop.setText(R.string.timer_start);        // change button text to "Start Timer"
 
-                // check if the totalTime was the studyTime
+                // Check if the totalTime was the studyTime
                 if (totalTime == studyTime) {
                     totalTime = breakTime;      // set totalTime to breakTime
                     String timeLeftText = "10:00";      // set timer text to 10 minutes
                     timerText.setText(timeLeftText);
+
+                // Check if the totalTime was the breakTime
                 } else if (totalTime == breakTime) {
                     totalTime = studyTime;      // set totalTime to studyTime
                     String timeLeftText = "50:00";      // set timer text to 50 minutes
@@ -97,9 +120,12 @@ public class TimerActivity extends AppCompatActivity {
         }.start();
     }
 
-    // update the timer text
+    /**
+     * updateTimer()
+     * Updates the timer text to reflect the time left in minutes:seconds format
+     */
     private void updateTimer() {
-        // find the time in minutes and seconds
+        // Find the time in minutes and seconds
         long minutes = (timeLeft / 1000) / 60;
         long seconds = (timeLeft / 1000) % 60;
 
@@ -108,10 +134,13 @@ public class TimerActivity extends AppCompatActivity {
         timerText.setText(timeLeftText);
     }
 
-    // update background colour to represent time left
+    /**
+     * updateBackground()
+     * Updates the background height to represent percentage of time left
+     */
     private void updateBackground() {
         double percentage = (double) timeLeft / totalTime;
-        // call timerBackground function setPercentage()
+        // Call timerBackground function setPercentage()
         timerBackground.setPercentage(percentage);
     }
 }
