@@ -1,8 +1,8 @@
 # Study App (android-app)
 
-## Features
-
-- Interface: Design is focused on simplicity and easy-to-use navigation
-- User Authentication: Login to access the apps features
-- To-do List: Track tasks
-- Pomodoro Timer: Help stay focused and ensure productivity with the Pomodoro Technique
+## Installation
+**Recommended**
+- Unzip "app" into an empty directory
+- Open directory in Android Studio
+- Build the project within Android Studio
+- Emulate the device (recommended emulator "Pixel_3a_API_34_extension_level_7_arm64_v8a")
